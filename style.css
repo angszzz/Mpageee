@@ -1,0 +1,341 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(135deg, #E6A8E6 0%, #C8A8E6 25%, #B8A8E6 50%, #D8B8E8 75%, #E8C8E8 100%);
+    position: relative;
+}
+
+
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.star {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 20px;
+    animation: twinkle 2s ease-in-out infinite alternate;
+}
+
+.star:nth-child(1) { top: 15%; left: 20%; animation-delay: 0s; }
+.star:nth-child(2) { top: 25%; left: 80%; animation-delay: 0.5s; }
+.star:nth-child(3) { top: 10%; left: 60%; animation-delay: 1s; }
+.star:nth-child(4) { top: 30%; left: 10%; animation-delay: 1.5s; }
+.star:nth-child(5) { top: 20%; left: 90%; animation-delay: 2s; }
+.star:nth-child(6) { top: 70%; left: 15%; animation-delay: 0.3s; }
+.star:nth-child(7) { top: 80%; left: 85%; animation-delay: 1.2s; }
+.star:nth-child(8) { top: 75%; left: 50%; animation-delay: 1.8s; }
+
+.clouds {
+    position: fixed;
+    top: -45%;
+    left: 50%;
+    width: 30%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+    background-image: url('images/clouds.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.9;
+
+}
+
+.clouds-bottom {
+    position: fixed;
+    bottom: -20%;
+    left: 50%;
+    transform: translateX(-50%) rotate(180deg);
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-image: url('images/clouds.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.8;
+    
+}
+
+.proposal-container {
+    text-align: center;
+    z-index: 10;
+    position: relative;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    padding: 40px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    max-width: 500px;
+    width: 90%;
+}
+
+.question {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #E88BB7;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+    line-height: 1.2;
+}
+
+.love-message {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #E88BB7;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+    display: none;
+    animation: heartBeat 1.5s ease-in-out infinite;
+}
+
+.character {
+    margin: 30px 0;
+    position: relative;
+}
+
+.character img {
+    width: 350px;
+    height: auto;
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.1));
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.buttons-container {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    margin-top: 30px;
+    min-height: 80px;
+    align-items: center;
+}
+
+.btn {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 15px 35px;
+    border: 3px solid #E88BB7;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #E88BB7;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    min-width: 120px;
+}
+
+.btn:hover {
+    background: #E88BB7;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(232, 139, 183, 0.3);
+}
+
+.btn-yes {
+    background: linear-gradient(135deg, #FFB6C1, #E88BB7);
+    color: white;
+    border-color: #E88BB7;
+    margin-right: 20px;
+}
+
+.btn-yes:hover {
+    background: linear-gradient(135deg, #E88BB7, #D1477A);
+    transform: translateY(-2px) scale(1.05);
+}
+
+.btn-no {
+    position: relative;
+    transition: all 0.2s ease-out;
+    margin-left: 20px;
+}
+
+.btn-no.moving {
+    position: fixed; 
+    animation: runaway 0.3s ease-out forwards;
+}
+
+
+.gif {
+    position: absolute;
+    object-fit: contain;
+    border-radius: 0px;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.gif-1 {
+    top: 30%;
+    left: -1%;
+    width: 600px;
+    height: 550px;
+    z-index: 2;
+    rotate: 20deg;
+    opacity: 0.8;
+}
+
+.gif-2{
+    top: 60%;
+    left: -1%;
+    width: 600px;
+    height: 550px;
+    z-index: 2;
+    rotate: 10deg;
+    opacity: 0.8;
+}
+
+.gif-3 {
+    top: 27%;
+    left: 78%;
+    width: 600px;
+    height: 550px;
+    z-index: 2;
+    rotate: -10deg;
+    opacity: 0.8;
+}
+
+.gif-4{
+    top: 58%;
+    left: 78%;
+    width: 600px;
+    height: 550px;
+    z-index: 2;
+    rotate: -10deg;
+    opacity: 0.8;
+}
+
+.gif-5 {
+    top: -10%;
+    left: -1%;
+    width: 600px;
+    height: 550px;
+    z-index: 2;
+    rotate: 20deg;
+    opacity: 0.8;
+}
+
+.gif-6{
+    top: -8%;
+    left: 78%;
+    width: 600px;
+    height: 550px;
+    z-index: 2;
+    rotate: -10deg;
+    opacity: 0.8;
+}
+
+.gif-floor-1 {
+    top: 85%;
+    left: 0%;
+    width: 50%;
+    height: 15%;
+    z-index: 1;
+}
+
+.gif-floor-2 {
+    top: 85%;
+    left: 50%;
+    width: 50%;
+    height: 15%;
+    z-index: 1;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes twinkle {
+    0% { opacity: 0.3; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+@keyframes runaway {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(var(--move-x, 200px), var(--move-y, -100px)); }
+}
+
+@keyframes celebration {
+    0% { transform: scale(1) rotate(0deg); }
+    25% { transform: scale(1.1) rotate(5deg); }
+    50% { transform: scale(1.2) rotate(-5deg); }
+    75% { transform: scale(1.1) rotate(3deg); }
+    100% { transform: scale(1) rotate(0deg); }
+}
+
+.hidden {
+    display: none !important;
+}
+
+.celebrating {
+    animation: celebration 0.8s ease-in-out;
+}
+
+@media (max-width: 768px) {
+    .question {
+        font-size: 2rem;
+    }
+    
+    .love-message {
+        font-size: 2.5rem;
+    }
+    
+    .proposal-container {
+        padding: 30px 20px;
+    }
+    
+    .character img {
+        width: 150px;
+    }
+    
+    .btn {
+        font-size: 1.2rem;
+        padding: 12px 30px;
+    }
+    
+    .buttons-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
